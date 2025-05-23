@@ -131,20 +131,30 @@
     Your browser does not support the audio element.
   </audio>
 
+  <button id="playButton" onclick="playBirthdaySong()">Press here for the supplise</button>
+
   <script>
-    // Delay autoplay by 2 seconds
+    const audio = document.getElementById("birthdaySong");
+    const playButton = document.getElementById("playButton");
+
+    function playBirthdaySong() {
+      audio.play().then(() => {
+        playButton.style.display = "none"; // Hide button once playing
+      }).catch(error => {
+        console.error("Manual play failed:", error);
+      });
+    }
+
+    // Try autoplay after 2 seconds
     window.addEventListener("load", function () {
       setTimeout(function () {
-        const audio = document.getElementById("birthdaySong");
-        audio.play().catch(function (error) {
-          console.warn("Autoplay blocked. User interaction may be required.", error);
+        audio.play().catch(() => {
+          // Show fallback button if autoplay fails
+          playButton.style.display = "inline-block";
         });
-      }, 2000); // 2000 milliseconds = 2 seconds
+      }, 2000);
     });
   </script>
-
-
- 
 
 
 
