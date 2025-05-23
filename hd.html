@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Happy Birthday</title>
 	<style type="text/css">
 		body
 {
@@ -102,6 +102,7 @@
 }
 	</style>
 </head>
+	
 <body>
 
 <body>
@@ -124,46 +125,30 @@
 
  
 
+
 <audio id="birthdaySong" loop>
-  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+    <source src="https://github.com/DonNexon/happy_birthday/raw/main/71-Kevin-Lax-Happy-Birthday(chosic.com).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-<div id="startPrompt" style="text-align: center; padding: 20px;">
-  <button onclick="enableAudio()">🎉 Start the Birthday Surprise</button>
-</div>
+  <script>
+    // Delay autoplay by 2 seconds
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        const audio = document.getElementById("birthdaySong");
+        audio.play().catch(function (error) {
+          console.warn("Autoplay blocked. User interaction may be required.", error);
+        });
+      }, 2000); // 2000 milliseconds = 2 seconds
+    });
+  </script>
 
 
-<script>
-  const audio = document.getElementById('birthdaySong');
-  const card = document.querySelector('.card');
-  let audioEnabled = false;
-
-  function enableAudio() {
-    audioEnabled = true;
-    audio.play();
-    document.getElementById('startPrompt').style.display = 'none';
-  }
-
-  card.addEventListener('mouseenter', () => {
-    if (audioEnabled) {
-      audio.currentTime = 0;
-      audio.play().catch((e) => {
-        console.log("Autoplay still blocked:", e);
-      });
-    }
-  });
-
-  card.addEventListener('mouseleave', () => {
-    if (audioEnabled) {
-      audio.pause();
-    }
-  });
-</script>
+ 
 
 
 
 
-</body>
+
 </body>
 </html>
